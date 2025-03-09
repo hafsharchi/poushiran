@@ -14,5 +14,9 @@ func SetupRoutes(router *gin.RouterGroup) {
 	productRoutes := router.Group("/products")
 	{
 		productRoutes.GET("", productHandler.GetProducts)
+		productRoutes.GET("/:id", productHandler.GetProductByID)
+		productRoutes.POST("", productHandler.CreateProduct)
+		productRoutes.PUT("/:id", productHandler.UpdateProduct)
+		productRoutes.DELETE("/:id", productHandler.DeleteProduct)
 	}
-} 
+}

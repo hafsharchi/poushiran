@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorCustomizations": {
+        "gitDecoration.untrackedResourceForeground": "#69eb83",
+        "gitDecoration.modifiedResourceForeground": "#79c5ff",
+        "gitDecoration.conflictingResourceForeground": "#eeee64",
+        "gitDecoration.deletedResourceForeground": "#f85149",
+        "gitDecoration.ignoredResourceForeground": "#6d6d6d",
+        "gitDecoration.errorForeground": "#f85149",
+        "gitDecoration.warningForeground": "#d29922"
+    }
+}

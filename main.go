@@ -5,7 +5,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/poushiran/api/routes"
+	"github.com/poushiran/config"
 	_ "github.com/poushiran/docs"
+	"github.com/poushiran/internal/database"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -17,6 +19,16 @@ import (
 // @BasePath        /api/v1
 
 func main() {
+	// Load configuration
+	cfg := config.LoadConfig()
+
+	// Initialize database
+	err := database.Initialize(cfg)
+	if err != nil {
+		log.Fatalf("Failed to initialize database: %v", err)
+	}
+
+	// Initialize Gin router
 	r := gin.Default()
 
 	// Setup API routes
@@ -27,7 +39,7 @@ func main() {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Start server
-	if err := r.Run(":8080"); err != nil {
+	if err := r.Run(":" + cfg.Server.Port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
-} 
+}
