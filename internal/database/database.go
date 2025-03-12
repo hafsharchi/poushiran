@@ -41,7 +41,7 @@ func Initialize(config *config.Config) error {
 // runMigrations runs database migrations
 func runMigrations() error {
 	// Auto migrate the models
-	err := DB.AutoMigrate(&models.Product{})
+	err := DB.AutoMigrate(&models.Product{}, &models.User{})
 	if err != nil {
 		return err
 	}

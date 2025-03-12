@@ -1,5 +1,12 @@
 basePath: /api/v1
 definitions:
+  handlers.LoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
   models.Product:
     properties:
       category:
@@ -140,4 +147,22 @@ paths:
       summary: Update a product
       tags:
       - products
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user and return a JWT token
+      parameters:
+      - description: Login request payload
+        in: body
+        name: loginRequest
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.LoginRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: User Login
+      tags:
+      - users
 swagger: "2.0"
